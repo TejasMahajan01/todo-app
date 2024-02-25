@@ -1,0 +1,42 @@
+@mixin RowFlexCenter() {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@mixin RowFlexStart() {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+@mixin ColumnFlexCenter() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin ColumnFlexStart() {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+@mixin ButtonProps($btn-height: 2rem) {
+  min-height: $btn-height;
+  min-width: $btn-height;
+  line-height: $btn-height !important;
+  text-align: center;
+}
+
+@mixin IconProps($content, $font, $left) {
+  content: $content;
+  position: absolute;
+  left: $left;
+
+  @if $font == "regular" {
+    font: var(--fa-font-regular);
+  } @else {
+    font: var(--fa-font-solid);
+  }
+}

@@ -1,0 +1,33 @@
+@import "./variables";
+@import "./resets";
+@import "./mixins";
+@import "./header";
+@import "./main-container";
+@import "./footer";
+@import "./shared";
+
+body {
+  background-color: var(--body-background);
+  color: var(--primary-text-color);
+  height: 100vh;
+  height: 100dvh;
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 840px) {
+  #root {
+    width: 70%;
+  }
+
+  .footer {
+    padding-bottom: 2rem;
+  }
+
+  .input-group__button {
+    display: none;
+  }
+}

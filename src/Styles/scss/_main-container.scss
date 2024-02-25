@@ -1,0 +1,95 @@
+.main-container {
+  padding: 0 1rem;
+
+  .todo-list {
+    @include ColumnFlexStart();
+    gap: 0.25rem;
+
+    &__item {
+      width: 100%;
+      min-height: var(--primary-height);
+
+      @include RowFlexCenter();
+      justify-content: space-between;
+      gap: var(--white-space);
+
+      padding-left: 3rem;
+      position: relative;
+
+      &-content {
+        word-wrap: break-word;
+        overflow: hidden;
+        color: inherit;
+      }
+
+      &::before {
+        @include IconProps("\f111", "regular", 0.5rem);
+        @include ButtonProps();
+        font-size: 1.25rem !important; // For consistent font size among all state changes
+
+        // Popup effect - Outline apply to it's current position unlike border and padding, they change elements position
+        outline: solid 0.25rem transparent;
+        border-radius: 50%;
+        transition: scale ease 0.1s;
+      }
+
+      // Additional Popup effect on clicked event of checkbox
+      &:active::before {
+        transform: scale(0.8);
+        outline-color: var(--primary-background-active);
+        background-color: var(--primary-background-active);
+        color: inherit;
+      }
+
+      // Change the circle to circle check icon
+      &:hover::before {
+        content: "\f058";
+      }
+
+      &.completed {
+        color: var(--primary-color-completed);
+
+        & .todo-list__item-content {
+          text-decoration: line-through;
+        }
+
+        // Change to check icon
+        &::before {
+          content: "\f058";
+          font: var(--fa-font-solid);
+        }
+      }
+
+      &-cross-icon {
+        @include ButtonProps();
+        border-radius: 50%;
+        font-size: 1.125rem;
+        color: inherit; // Inherit the color from parent
+
+        &:hover {
+          background-color: var(--primary-background-active);
+        }
+      }
+    }
+  }
+
+  .complete-task-toggle {
+    padding: 0.6rem 1rem 0.6rem 2rem;
+    margin: var(--white-space) 0;
+    word-spacing: 0.25rem;
+    position: relative;
+    @include RowFlexCenter();
+
+    // Opened class where complete todos will be visible
+    &::before {
+      @include IconProps("\f107", "solid", 0);
+      @include ButtonProps();
+      transition: transform 0.1s ease-in-out;
+    }
+
+    // Toggle Classes For hidding complete todos
+    &.closed:before {
+      transform: rotate(-90deg);
+    }
+  }
+}

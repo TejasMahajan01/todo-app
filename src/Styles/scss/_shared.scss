@@ -1,0 +1,49 @@
+.header,
+.footer {
+  padding: 1rem;
+  background-color: var(--body-background);
+}
+
+.todo-list__item,
+.complete-task-toggle,
+.input-group,
+.input-group__button {
+  border-radius: var(--primary-border-radius);
+}
+
+.input-group,
+.input-group__icon,
+.input-group__button,
+.todo-list__item,
+.todo-list__item-cross-icon,
+.complete-task-toggle {
+  cursor: pointer;
+}
+
+.todo-list__item,
+.input-group__field {
+  font-size: var(--primary-font-size);
+}
+
+// Background Color & Text Color
+.todo-list__item,
+.input-group,
+.complete-task-toggle {
+  background-color: var(--primary-background);
+  color: var(--primary-text-color);
+
+  &:hover {
+    background-color: var(--primary-background-hover);
+  }
+}
+
+// Whitespace
+.todo-list__item,
+.input-group {
+  padding: 0 var(--white-space); // Inline Whitespace
+}
+
+.todo-list__item-content,
+.input-group__field {
+  padding: var(--white-space) 0; // Block Whitespace
+}

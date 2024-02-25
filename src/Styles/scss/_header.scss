@@ -1,0 +1,10 @@
+.header {
+  min-height: var(--primary-height); // 3.125rem
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  &-logo {
+    width: 4.75rem;
+  }
+}

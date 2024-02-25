@@ -1,0 +1,44 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: inherit; // Inherit the width from #root
+
+  .input-group {
+    min-height: var(--primary-height);
+
+    @include RowFlexCenter();
+    gap: var(--white-space);
+
+    &__field {
+      flex-grow: 2; // It will take all the remaining space into account
+      resize: none;
+      overflow: hidden;
+    }
+
+    &__icon,
+    &__button {
+      @include ButtonProps();
+    }
+
+    &__icon {
+      font-size: 1.25rem;
+    }
+
+    &__icon,
+    &__field,
+    &__field::placeholder {
+      color: var(--primary-text-color);
+    }
+
+    &__field:focus::placeholder {
+      opacity: 0.7;
+    }
+
+    &__button {
+      font-size: 1rem;
+      color: var(--input-button-color);
+      background-color: var(--input-button-background);
+    }
+  }
+}

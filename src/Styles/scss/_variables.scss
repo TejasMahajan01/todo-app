@@ -1,0 +1,30 @@
+:root {
+  --primary-height: 3.125rem;
+  --primary-font-size: 0.875rem;
+  --primary-border-radius: 0.1875rem;
+  --primary-color-completed: rgb(130, 130, 130);
+
+  --white-space : 0.5rem;
+}
+
+[data-theme="dark"] {
+  --primary-text-color: white;
+  --body-background: rgb(25, 25, 25);
+  --primary-background: rgb(45, 45, 45);
+  --primary-background-hover: rgb(60, 60, 60);
+  --primary-background-active: rgb(90, 90, 90);
+
+  --input-button-background : white;
+  --input-button-color : black;
+}
+
+[data-theme="light"] {
+  --primary-text-color: black;
+  --body-background: rgb(230, 230, 230);
+  --primary-background: rgb(245, 245, 245);
+  --primary-background-hover: rgb(255, 255, 255);
+  --primary-background-active: rgb(230, 230, 230);
+
+  --input-button-background : black;
+  --input-button-color : white;
+}
