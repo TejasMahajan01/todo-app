@@ -14,6 +14,7 @@
   --primary-background: rgb(45, 45, 45);
   --primary-background-hover: rgb(60, 60, 60);
   --primary-background-active: rgb(90, 90, 90);
+  --primary-border-color: rgb(55, 55, 55);
   --input-button-background: white;
   --input-button-color: black;
 }
@@ -24,6 +25,7 @@
   --primary-background: rgb(255, 255, 255);
   --primary-background-hover: rgb(255, 255, 255);
   --primary-background-active: rgb(230, 230, 230);
+  --primary-border-color: #edf2f4;
   --input-button-background: black;
   --input-button-color: white;
 }
@@ -217,7 +219,7 @@ ul {
 .complete-task-toggle {
   background-color: var(--primary-background);
   color: var(--primary-text-color);
-  border: solid 1px #edf2f4;
+  border: solid 1px var(--primary-border-color);
 }
 .todo-list__item:hover,
 .input-group:hover,

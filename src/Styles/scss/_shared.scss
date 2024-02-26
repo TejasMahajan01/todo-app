@@ -31,7 +31,7 @@
 .complete-task-toggle {
   background-color: var(--primary-background);
   color: var(--primary-text-color);
-  border: solid 1px #edf2f4;
+  border: solid 1px var(--primary-border-color);
 
   &:hover {
     background-color: var(--primary-background-hover);
