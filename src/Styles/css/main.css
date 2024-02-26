@@ -5,6 +5,7 @@
   --primary-font-size: 0.875rem;
   --primary-border-radius: 0.1875rem;
   --primary-color-completed: rgb(130, 130, 130);
+  --primary-gap: 0.25rem;
   --white-space: 0.5rem;
 }
 
@@ -17,6 +18,7 @@
   --primary-border-color: rgb(55, 55, 55);
   --input-button-background: white;
   --input-button-color: black;
+  --placeholder-border-color: rgb(31, 31, 31);
 }
 
 [data-theme=light] {
@@ -28,6 +30,7 @@
   --primary-border-color: #edf2f4;
   --input-button-background: black;
   --input-button-color: white;
+  --placeholder-border-color: white;
 }
 
 * {
@@ -54,14 +57,11 @@ ul {
   width: 4.75rem;
 }
 
-.main-container {
-  padding: 0 1rem;
-}
 .main-container .todo-list {
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 0.25rem;
+  gap: var(--primary-gap);
 }
 .main-container .todo-list__item {
   width: 100%;
@@ -127,7 +127,7 @@ ul {
 .main-container .complete-task-toggle {
   padding: 0.6rem 1rem 0.6rem 2rem;
   margin: var(--white-space) 0;
-  word-spacing: 0.25rem;
+  word-spacing: var(--primary-gap);
   position: relative;
   display: flex;
   flex-direction: row;
@@ -146,6 +146,21 @@ ul {
 }
 .main-container .complete-task-toggle.closed:before {
   transform: rotate(-90deg);
+}
+
+.placeholder-container {
+  margin-top: var(--primary-gap);
+}
+.placeholder-container .placeholder-list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--primary-gap);
+}
+.placeholder-container .placeholder-list__item {
+  width: 100%;
+  min-height: var(--primary-height);
+  border-top: solid 2px var(--placeholder-border-color);
 }
 
 .footer {
@@ -193,6 +208,11 @@ ul {
   background-color: var(--body-background);
 }
 
+.main-container,
+.placeholder-container {
+  padding: 0 1rem;
+}
+
 .todo-list__item,
 .complete-task-toggle,
 .input-group,
@@ -210,7 +230,8 @@ ul {
 }
 
 .todo-list__item,
-.input-group__field {
+.input-group__field,
+.input-group__field::placeholder {
   font-size: var(--primary-font-size);
 }
 

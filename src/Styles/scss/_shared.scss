@@ -4,6 +4,11 @@
   background-color: var(--body-background);
 }
 
+.main-container,
+.placeholder-container {
+  padding: 0 1rem;
+}
+
 .todo-list__item,
 .complete-task-toggle,
 .input-group,
@@ -21,7 +26,8 @@
 }
 
 .todo-list__item,
-.input-group__field {
+.input-group__field,
+.input-group__field::placeholder {
   font-size: var(--primary-font-size);
 }
 

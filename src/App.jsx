@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import MainContainer from "./Components/MainContainer";
+import PlaceholderContainer from "./Components/PlaceholderContainer";
 
 export default function App() {
   const [incompleteTodos, setIncompleteTodos] = useState(() =>
@@ -12,13 +13,35 @@ export default function App() {
     JSON.parse(getStoredData("completeTodos", "[]"))
   );
 
+  const [placeholderItems, setPlaceholderItems] = useState(0);
+
+  // Recalculate placeholder items whenever content renders
+  useLayoutEffect(() => {
+    updatePlaceholderItems();
+  }, []);
+
   useEffect(() => {
     setStoredData("incompleteTodos", JSON.stringify(incompleteTodos));
+    updatePlaceholderItems();
   }, [incompleteTodos]);
 
   useEffect(() => {
     setStoredData("completeTodos", JSON.stringify(completeTodos));
+    updatePlaceholderItems();
   }, [completeTodos]);
+
+  // Recalculate placeholder items whenever window resizes
+  useEffect(() => {
+    const handleResize = () => {
+      updatePlaceholderItems();
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   function getStoredData(keyName, defaultValue) {
     return localStorage.getItem(keyName) || defaultValue;
@@ -26,6 +49,21 @@ export default function App() {
 
   function setStoredData(keyName, dataValue) {
     localStorage.setItem(keyName, dataValue);
+  }
+
+  function updatePlaceholderItems() {
+    const windowHeight = window.innerHeight;
+    const headerHeight = document.querySelector("header").offsetHeight;
+    const footerHeight = document.querySelector("footer").offsetHeight;
+    const mainHeight = document.querySelector("main").offsetHeight;
+
+    const computedPlaceholders = Math.floor(
+      (windowHeight - headerHeight - footerHeight - mainHeight) / 50
+    );
+
+    if (computedPlaceholders > 0) {
+      setPlaceholderItems(computedPlaceholders);
+    }
   }
 
   return (
@@ -38,7 +76,9 @@ export default function App() {
         setCompleteTodos={setCompleteTodos}
         getStoredData={getStoredData}
         setStoredData={setStoredData}
+        updatePlaceholderItems={updatePlaceholderItems}
       />
+      <PlaceholderContainer placeholderItems={placeholderItems} />
       <Footer setIncompleteTodos={setIncompleteTodos} />
     </>
   );

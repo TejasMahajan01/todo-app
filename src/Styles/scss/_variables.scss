@@ -3,7 +3,7 @@
   --primary-font-size: 0.875rem;
   --primary-border-radius: 0.1875rem;
   --primary-color-completed: rgb(130, 130, 130);
-
+  --primary-gap: 0.25rem;
   --white-space: 0.5rem;
 }
 
@@ -17,6 +17,8 @@
 
   --input-button-background: white;
   --input-button-color: black;
+
+  --placeholder-border-color: rgb(31, 31, 31);
 }
 
 [data-theme="light"] {
@@ -29,4 +31,6 @@
 
   --input-button-background: black;
   --input-button-color: white;
+
+  --placeholder-border-color: white;
 }

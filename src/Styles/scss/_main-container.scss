@@ -1,9 +1,7 @@
 .main-container {
-  padding: 0 1rem;
-
   .todo-list {
     @include ColumnFlexStart();
-    gap: 0.25rem;
+    gap: var(--primary-gap);
 
     &__item {
       width: 100%;
@@ -76,7 +74,7 @@
   .complete-task-toggle {
     padding: 0.6rem 1rem 0.6rem 2rem;
     margin: var(--white-space) 0;
-    word-spacing: 0.25rem;
+    word-spacing: var(--primary-gap);
     position: relative;
     @include RowFlexCenter();
 

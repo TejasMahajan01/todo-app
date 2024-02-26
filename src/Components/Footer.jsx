@@ -51,13 +51,12 @@ export default function Footer({ setIncompleteTodos }) {
   }
 
   function updateHeight() {
-    let updatedHeight;
+    if (!textareaRef.current) return; // Ensure textareaRef is valid
 
-    if (inputValue.length === 0) {
-      updatedHeight = "auto";
-    } else {
-      updatedHeight = `${textareaRef.current.scrollHeight / 16}rem`;
-    }
+    const updatedHeight =
+      inputValue.length === 0
+        ? "auto"
+        : `${textareaRef.current.scrollHeight / 16}rem`;
 
     textareaRef.current.style.height = updatedHeight;
   }
@@ -81,37 +80,35 @@ export default function Footer({ setIncompleteTodos }) {
   }
 
   return (
-    <>
-      <footer className="footer">
-        <div className="input-group">
-          <button
-            type="button"
-            className={`input-group__icon fa-regular ${
-              inputFocus ? "fa-circle" : "fa-plus"
-            }`}
-            onClick={() => textareaRef.current.focus()}
-          ></button>
+    <footer className="footer">
+      <div className="input-group">
+        <button
+          type="button"
+          className={`input-group__icon fa-regular ${
+            inputFocus ? "fa-circle" : "fa-plus"
+          }`}
+          onClick={() => textareaRef.current.focus()}
+        ></button>
 
-          <textarea
-            className="input-group__field"
-            name="inputField"
-            rows="1"
-            maxLength={80}
-            ref={textareaRef}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={(e) => handleKeyDown(e)}
-            onFocus={() => setInputFocus(true)}
-            onBlur={() => setInputFocus(false)}
-          ></textarea>
+        <textarea
+          className="input-group__field"
+          name="inputField"
+          rows="1"
+          maxLength={80}
+          ref={textareaRef}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
+          onFocus={() => setInputFocus(true)}
+          onBlur={() => setInputFocus(false)}
+        ></textarea>
 
-          <button
-            type="button"
-            className="input-group__button fa-solid fa-arrow-up"
-            onClick={() => addTodo()}
-          ></button>
-        </div>
-      </footer>
-    </>
+        <button
+          type="button"
+          className="input-group__button fa-solid fa-arrow-up"
+          onClick={() => addTodo()}
+        ></button>
+      </div>
+    </footer>
   );
 }

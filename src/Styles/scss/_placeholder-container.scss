@@ -1,0 +1,14 @@
+.placeholder-container {
+  margin-top: var(--primary-gap);
+
+  .placeholder-list {
+    @include ColumnFlexStart();
+    gap: var(--primary-gap);
+
+    &__item {
+      width: 100%;
+      min-height: var(--primary-height);
+      border-top: solid 2px var(--placeholder-border-color);
+    }
+  }
+}

@@ -7,6 +7,7 @@ export default function MainContainer({
   setCompleteTodos,
   getStoredData,
   setStoredData,
+  updatePlaceholderItems,
 }) {
   const [showCompleted, setShowCompleted] = useState(() =>
     JSON.parse(getStoredData("showCompleted", false))
@@ -14,6 +15,7 @@ export default function MainContainer({
 
   useEffect(() => {
     setStoredData("showCompleted", showCompleted);
+    updatePlaceholderItems();
   }, [showCompleted]);
 
   function handleTodoUpdate(id, listType) {
@@ -62,6 +64,7 @@ export default function MainContainer({
       );
     }
   }
+
   return (
     <main
       className="main-container"
