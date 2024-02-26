@@ -19,9 +19,9 @@
 }
 
 [data-theme=light] {
-  --primary-text-color: black;
-  --body-background: rgb(230, 230, 230);
-  --primary-background: rgb(245, 245, 245);
+  --primary-text-color: #000000;
+  --body-background: linear-gradient(-45deg, #edf2fb, #e2eafc);
+  --primary-background: rgb(255, 255, 255);
   --primary-background-hover: rgb(255, 255, 255);
   --primary-background-active: rgb(230, 230, 230);
   --input-button-background: black;
@@ -217,6 +217,7 @@ ul {
 .complete-task-toggle {
   background-color: var(--primary-background);
   color: var(--primary-text-color);
+  border: solid 1px #edf2f4;
 }
 .todo-list__item:hover,
 .input-group:hover,
@@ -235,7 +236,7 @@ ul {
 }
 
 body {
-  background-color: var(--body-background);
+  background: var(--body-background);
   color: var(--primary-text-color);
   height: 100vh;
   height: 100dvh;

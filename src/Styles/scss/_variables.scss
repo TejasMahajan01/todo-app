@@ -4,7 +4,7 @@
   --primary-border-radius: 0.1875rem;
   --primary-color-completed: rgb(130, 130, 130);
 
-  --white-space : 0.5rem;
+  --white-space: 0.5rem;
 }
 
 [data-theme="dark"] {
@@ -14,17 +14,19 @@
   --primary-background-hover: rgb(60, 60, 60);
   --primary-background-active: rgb(90, 90, 90);
 
-  --input-button-background : white;
-  --input-button-color : black;
+  --input-button-background: white;
+  --input-button-color: black;
 }
 
 [data-theme="light"] {
-  --primary-text-color: black;
-  --body-background: rgb(230, 230, 230);
-  --primary-background: rgb(245, 245, 245);
+  --primary-text-color: #000000;
+  --body-background: linear-gradient(-45deg, #edf2fb, #e2eafc);
+  --primary-background: rgb(255, 255, 255);
   --primary-background-hover: rgb(255, 255, 255);
   --primary-background-active: rgb(230, 230, 230);
 
-  --input-button-background : black;
-  --input-button-color : white;
+  --input-button-background: black;
+  --input-button-color: white;
 }
+
+
