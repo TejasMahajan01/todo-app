@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { getStoredData, setStoredData } from "../utils";
+import React from "react";
 
 export default function MainContainer({
   incompleteTodos,
-  completeTodos,
   setIncompleteTodos,
+  completeTodos,
   setCompleteTodos,
-  updatePlaceholderItems,
+  showCompleted,
+  setShowCompleted,
 }) {
-  const [showCompleted, setShowCompleted] = useState(() =>
-    JSON.parse(getStoredData("showCompleted", false))
-  );
-
-  useEffect(() => {
-    setStoredData("showCompleted", showCompleted);
-    updatePlaceholderItems();
-  }, [showCompleted]);
-
   function handleTodoUpdate(id, listType) {
     let clickedTodo;
 
