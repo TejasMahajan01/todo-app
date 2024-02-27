@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { getStoredData, setStoredData } from "../utils";
 
 export default function MainContainer({
   incompleteTodos,
   completeTodos,
   setIncompleteTodos,
   setCompleteTodos,
-  getStoredData,
-  setStoredData,
   updatePlaceholderItems,
 }) {
   const [showCompleted, setShowCompleted] = useState(() =>

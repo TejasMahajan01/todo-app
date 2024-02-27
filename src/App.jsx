@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import MainContainer from "./Components/MainContainer";
 import PlaceholderContainer from "./Components/PlaceholderContainer";
+import { getStoredData, setStoredData } from "./utils";
 
 export default function App() {
   const [incompleteTodos, setIncompleteTodos] = useState(() =>
@@ -42,14 +43,6 @@ export default function App() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  function getStoredData(keyName, defaultValue) {
-    return localStorage.getItem(keyName) || defaultValue;
-  }
-
-  function setStoredData(keyName, dataValue) {
-    localStorage.setItem(keyName, dataValue);
-  }
 
   function updatePlaceholderItems() {
     const windowHeight = window.innerHeight;
