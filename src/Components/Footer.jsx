@@ -1,10 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { generateRandomToken, getRandomPlaceholder } from "../utils";
 
-export default function Footer({ setIncompleteTodos }) {
-  const [inputValue, setInputValue] = useState("");
-  const [inputFocus, setInputFocus] = useState(false);
-  const textareaRef = useRef(null);
+export default function Footer({
+  textareaRef,
+  inputValue,
+  setInputValue,
+  inputFocus,
+  setInputFocus,
+  setIncompleteTodos,
+  updateTextareaHeight,
+}) {
 
   useEffect(() => {
     textareaRef.current.placeholder =
@@ -14,7 +19,7 @@ export default function Footer({ setIncompleteTodos }) {
   }, [inputFocus]);
 
   useEffect(() => {
-    updateHeight();
+    updateTextareaHeight();
   }, [inputValue]);
 
   function handleKeyDown(event) {
@@ -35,17 +40,6 @@ export default function Footer({ setIncompleteTodos }) {
       setIncompleteTodos((prevTodos) => [todo, ...prevTodos]); // Insert new todo at the beginning of the array
       setInputValue(""); // Clear input field after adding todo
     }
-  }
-
-  function updateHeight() {
-    if (!textareaRef.current) return; // Ensure textareaRef is valid
-
-    const updatedHeight =
-      inputValue.length === 0
-        ? "auto"
-        : `${textareaRef.current.scrollHeight / 16}rem`;
-
-    textareaRef.current.style.height = updatedHeight;
   }
 
   return (

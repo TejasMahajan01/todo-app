@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import MainContainer from "./Components/MainContainer";
@@ -18,8 +18,10 @@ export default function App() {
     JSON.parse(getStoredData("showCompleted", false))
   );
 
-  // Define placeholderItems state and setter function
   const [placeholderItems, setPlaceholderItems] = useState(0);
+  const [inputValue, setInputValue] = useState("");
+  const [inputFocus, setInputFocus] = useState(false);
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     setStoredData("incompleteTodos", JSON.stringify(incompleteTodos));
@@ -42,9 +44,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleResize = debounce(() => {
+    const handleResize = () => {
       updatePlaceholderItems();
-    }, 200); // Adjust the delay as needed
+      updateTextareaHeight();
+    };
 
     window.addEventListener("resize", handleResize);
 
@@ -73,14 +76,12 @@ export default function App() {
     setPlaceholderItems(Math.max(computedPlaceholders, 0)); // Ensuring the value is not negative
   }
 
-  function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
+  function updateTextareaHeight() {
+    const { current } = textareaRef;
+    if (!current) return; // Ensure textareaRef is valid
+
+    current.style.height = "auto";
+    current.style.height = `${current.scrollHeight / 16}rem`;
   }
 
   return (
@@ -95,7 +96,15 @@ export default function App() {
         setShowCompleted={setShowCompleted}
       />
       <PlaceholderContainer placeholderItems={placeholderItems} />
-      <Footer setIncompleteTodos={setIncompleteTodos} />
+      <Footer
+        textareaRef={textareaRef}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        inputFocus={inputFocus}
+        setInputFocus={setInputFocus}
+        updateTextareaHeight={updateTextareaHeight}
+        setIncompleteTodos={setIncompleteTodos}
+      />
     </>
   );
 }
