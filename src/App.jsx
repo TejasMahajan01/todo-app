@@ -15,7 +15,7 @@ export default function App() {
   );
 
   const [showCompleted, setShowCompleted] = useState(() =>
-    JSON.parse(getStoredData("showCompleted", false))
+    JSON.parse(getStoredData("showCompleted", true))
   );
 
   const [placeholderItems, setPlaceholderItems] = useState(0);
