@@ -94,6 +94,7 @@ export default function App() {
         setCompleteTodos={setCompleteTodos}
         showCompleted={showCompleted}
         setShowCompleted={setShowCompleted}
+        placeholderItems={placeholderItems}
       />
       <PlaceholderContainer placeholderItems={placeholderItems} />
       <Footer
