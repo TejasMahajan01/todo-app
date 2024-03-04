@@ -7,7 +7,7 @@ export default function MainContainer({
   setCompleteTodos,
   showCompleted,
   setShowCompleted,
-  placeholderItems,
+  placeholderItems
 }) {
   function handleTodoUpdate(id, listType) {
     let clickedTodo;
@@ -63,6 +63,7 @@ export default function MainContainer({
         paddingBottom: placeholderItems === 0 ? "10rem" : "inherit",
       }}
     >
+      
       {/* Show Incomplete Todos */}
       {incompleteTodos.length > 0 && (
         <ul className="todo-list incomplete-todos-list">

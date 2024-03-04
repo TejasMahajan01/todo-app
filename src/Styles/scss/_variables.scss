@@ -8,6 +8,7 @@
 }
 
 [data-theme="dark"] {
+  --logo-color: white;
   --primary-text-color: white;
   --body-background: rgb(25, 25, 25);
   --primary-background: rgb(45, 45, 45);
@@ -22,12 +23,13 @@
 }
 
 [data-theme="light"] {
+  --logo-color: black;
   --primary-text-color: #000000;
-  --body-background: linear-gradient(-45deg, #edf2fb, #e2eafc);
+  --body-background: #dee7f7;
   --primary-background: rgb(255, 255, 255);
   --primary-background-hover: rgb(255, 255, 255);
   --primary-background-active: rgb(230, 230, 230);
-  --primary-border-color: #edf2f4;
+  --primary-border-color: rgb(211, 227, 255);
 
   --input-button-background: black;
   --input-button-color: white;

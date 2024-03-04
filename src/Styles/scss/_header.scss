@@ -6,5 +6,10 @@
 
   &-logo {
     width: 4.75rem;
+    height: fit-content;
+
+    path {
+      fill: var(--logo-color);
+    }
   }
 }
